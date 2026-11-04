@@ -5,18 +5,17 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { nav, site } from "@/config/site";
 import { services } from "@/data/services";
-import logoAsset from "@/assets/zaptask_logo.png.asset.json";
 
 export function Logo({ className }: { className?: string }) {
   return (
     <Link to="/" className="inline-flex items-center" aria-label="Zaptask LLC home">
       <img
-        src={logoAsset.url}
+        src="/zaptask-wordmark.png"
         alt="Zaptask LLC"
-        width={2000}
-        height={272}
+        width={474}
+        height={62}
         decoding="async"
-        className={cn("h-6 w-auto md:h-7", className)}
+        className={cn("h-6 w-auto max-w-full object-contain md:h-7", className)}
       />
     </Link>
   );
