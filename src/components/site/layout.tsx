@@ -113,6 +113,7 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-3">
             <li><Link to="/privacy" className={a}>Privacy Policy</Link></li>
             <li><Link to="/terms" className={a}>Terms & Conditions</Link></li>
+            <li><Link to="/refund-policy" className={a}>Refund Policy</Link></li>
           </ul>
         </div>
       </div>

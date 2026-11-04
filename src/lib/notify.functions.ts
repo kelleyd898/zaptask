@@ -52,11 +52,10 @@ export const submitInquiry = createServerFn({ method: "POST" })
     const ip = req.headers.get("cf-connecting-ip") ?? req.headers.get("x-forwarded-for")?.split(",")[0] ?? "unknown";
     if (rateLimited(ip)) return { ok: false as const, error: "Too many requests. Please try again later." };
 
-    // Bot token is a server-only project secret, never in this codebase.
+    // Both values come from server-only environment variables (e.g. Vercel env).
     const botToken = process.env["TELEGRAM_BOT_TOKEN"];
-    // Owner's Telegram chat that receives every inquiry.
-    const chatId = "8762480548";
-    if (!botToken) {
+    const chatId = process.env["TELEGRAM_CHAT_ID"];
+    if (!botToken || !chatId) {
       console.error("Telegram credentials are not configured");
       return { ok: false as const, error: "We couldn't send your message right now. Please email us directly." };
     }
