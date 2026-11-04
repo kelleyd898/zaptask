@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useRef, type FormEvent } from "react";
-import { Mail, Phone, Loader2, CalendarDays } from "lucide-react";
+import { Mail, Phone, Loader2, CalendarDays, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { pageHead } from "@/lib/seo";
 import { site } from "@/config/site";
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/contact")({
     pageHead({
       path: "/contact",
       title: "Contact Zaptask LLC — Software Development Inquiries",
-      description: "Get in touch with Zaptask LLC by email, phone or our contact form for software development, web and IT consulting inquiries.",
+      description: "Get in touch with Zaptask LLC by email, phone or our contact form for website, landing page, frontend and web application inquiries.",
     }),
   component: Contact,
 });
@@ -60,7 +60,7 @@ function Contact() {
   return (
     <>
       <PageHero eyebrow="Contact Us" title="Let's talk about your project.">
-        Send us a message and we'll respond as soon as we can.
+        Send us a message and we'll respond as soon as we can. Every inquiry is read and answered by the owner.
       </PageHero>
       <section className="container-page grid gap-12 py-16 md:grid-cols-12 md:py-24">
         <aside className="space-y-4 md:col-span-4">
@@ -72,6 +72,10 @@ function Contact() {
             <Phone className="mt-0.5 size-5 text-brand" />
             <div><p className="text-sm text-muted-foreground">Phone</p><p className="font-medium">{site.phone}</p></div>
           </a>
+          <div className="flex items-start gap-4 rounded-2xl border border-border bg-card p-6">
+            <MapPin className="mt-0.5 size-5 text-brand" />
+            <div><p className="text-sm text-muted-foreground">Mailing Address</p><p className="font-medium">{site.address}</p></div>
+          </div>
           <Link to="/book" className="flex items-start gap-4 rounded-2xl border border-border bg-brand-soft p-6">
             <CalendarDays className="mt-0.5 size-5 text-brand" />
             <div><p className="font-medium">Prefer a call?</p><p className="text-sm text-muted-foreground">Request a consultation time.</p></div>

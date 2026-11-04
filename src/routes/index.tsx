@@ -11,9 +11,9 @@ export const Route = createFileRoute("/")({
   head: () =>
     pageHead({
       path: "/",
-      title: "Zaptask LLC — Software Development & IT Services in the US and Canada",
+      title: "Zaptask LLC — Website & Web App Development for Small Businesses",
       description:
-        "Zaptask LLC delivers custom software, web applications, UI/UX design and IT consulting for businesses across the United States and Canada.",
+        "Zaptask LLC builds websites, landing pages and business web applications for small businesses across the United States and Canada. Owner-operated, maintenance included.",
     }),
   component: Home,
 });
@@ -52,7 +52,7 @@ function Home() {
             Technology solutions built around <span className="text-brand">your business.</span>
           </h1>
           <p className="mt-7 max-w-2xl text-lg text-muted-foreground md:text-xl">
-            Zaptask LLC delivers thoughtful software development and digital technology solutions to help businesses build, improve and scale their digital operations.
+            Zaptask LLC builds and maintains websites, landing pages and business web applications for small businesses across the United States and Canada.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Link to="/services" className={cn(buttonVariants({ size: "lg" }), "h-12 px-6")}>
@@ -71,18 +71,33 @@ function Home() {
           <h2 className="mt-3 text-3xl font-semibold md:text-4xl">A focused software and technology partner.</h2>
         </div>
         <div className="space-y-5 text-lg text-muted-foreground md:col-span-7">
-          <p>Zaptask provides comprehensive software development services, including custom software engineering, web and mobile application design, IT consulting, software architecture and related digital technology solutions.</p>
-          <p>We work with businesses to understand their requirements and deliver solutions aligned with their operational and technical goals.</p>
+          <p>Zaptask handles website development, landing pages, frontend development, website maintenance and business web applications — the digital work a small business actually needs, without an agency attached.</p>
+          <p>We are currently working with small businesses, and we keep things simple: clear scope, plain updates and one point of contact from start to finish.</p>
           <Link to="/about" className="inline-flex items-center gap-1.5 text-base font-medium text-brand hover:underline">
             More about Zaptask <ArrowRight className="size-4" />
           </Link>
         </div>
       </section>
 
+      <section className="border-y border-border bg-secondary/60">
+        <div className="container-page grid gap-6 py-16 md:grid-cols-2 md:py-20">
+          <article className="rounded-2xl border border-border bg-card p-8 shadow-soft">
+            <p className="eyebrow">{site.focus.audienceEyebrow}</p>
+            <h2 className="mt-3 text-2xl font-semibold">Built for small businesses</h2>
+            <p className="mt-3 text-muted-foreground">{site.focus.audienceLine}</p>
+          </article>
+          <article className="rounded-2xl border border-border bg-card p-8 shadow-soft">
+            <p className="eyebrow">{site.focus.ownerEyebrow}</p>
+            <h2 className="mt-3 text-2xl font-semibold">You work with the owner</h2>
+            <p className="mt-3 text-muted-foreground">{site.focus.ownerLine}</p>
+          </article>
+        </div>
+      </section>
+
       <section className="border-y border-border bg-card">
         <div className="container-page py-20 md:py-28">
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHeading eyebrow="Services" title="Core services" intro="Engineering, design and consulting for the full lifecycle of your digital products." />
+            <SectionHeading eyebrow="Services" title="Core services" intro="Websites, landing pages, frontend builds, ongoing maintenance and business web applications." />
             <Link to="/services" className={buttonVariants({ variant: "outline" })}>All services</Link>
           </div>
           <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
@@ -129,7 +144,7 @@ function Home() {
       </section>
 
       <section className="container-page py-20 md:py-28">
-        <SectionHeading eyebrow="Industries" title="Industries we support" intro="Our services apply to organizations of many kinds that rely on dependable digital tools." />
+        <SectionHeading eyebrow="Industries" title="Industries we support" intro="Small businesses of many kinds that rely on dependable digital tools." />
         <ul className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
           {industries.map((i) => (
             <li key={i.label} className="flex flex-col items-start gap-4 rounded-xl border border-border bg-card p-5">

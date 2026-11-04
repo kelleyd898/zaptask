@@ -32,7 +32,7 @@ npm run dev
 
 Built on TanStack Start (React 19 + Vite + TypeScript + Tailwind v4, file-based routing, Lucide icons).
 
-- Business details, address placeholder, legal placeholders and portfolio toggle: `src/config/site.ts`
+- Business details, mailing address, small-business focus, legal placeholders and portfolio toggle: `src/config/site.ts`
 - Services content: `src/data/services.ts`
 - Contact + booking forms post to the server function in `src/lib/notify.functions.ts`, which validates input, applies a honeypot / timing check and a per-IP rate limit, then sends a Telegram message.
 

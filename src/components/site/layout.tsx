@@ -77,7 +77,7 @@ export function SiteFooter() {
         <div className="md:col-span-4">
           <p className="text-lg font-semibold">{site.name}</p>
           <p className="mt-3 max-w-xs text-sm text-ink-foreground/65">
-            Software development and technology services for businesses across the {site.markets}.
+            Website and web application development for small businesses across the {site.markets}.
           </p>
           <div className="mt-6 space-y-2">
             <a href={`mailto:${site.email}`} className={cn(a, "flex items-center gap-2")}>

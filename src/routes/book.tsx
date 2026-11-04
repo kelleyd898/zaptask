@@ -15,7 +15,7 @@ export const Route = createFileRoute("/book")({
     pageHead({
       path: "/book",
       title: "Book a Consultation — Zaptask LLC",
-      description: "Request a consultation with Zaptask LLC to discuss your software development, web application or IT consulting project.",
+      description: "Request a consultation with Zaptask LLC to discuss your website, landing page, frontend or business web application project.",
     }),
   component: Book,
 });

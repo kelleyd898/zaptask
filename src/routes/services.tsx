@@ -9,8 +9,8 @@ export const Route = createFileRoute("/services")({
   head: () =>
     pageHead({
       path: "/services",
-      title: "Services — Custom Software, Web Apps, UI/UX & IT Consulting | Zaptask LLC",
-      description: "Custom software development, websites, business web applications, API integration, UI/UX design, mobile app design and IT consulting for US and Canadian businesses.",
+      title: "Services — Websites, Landing Pages, Frontend & Web Apps | Zaptask LLC",
+      description: "Website development, landing pages, frontend development, website maintenance and business web applications for small businesses in the US and Canada.",
     }),
   component: Services,
 });
@@ -18,8 +18,8 @@ export const Route = createFileRoute("/services")({
 function Services() {
   return (
     <>
-      <PageHero eyebrow="Services" title="Software development and technology services.">
-        Zaptask provides comprehensive software development services, including custom software engineering, web and mobile application design, IT consulting, software architecture and related digital technology solutions.
+      <PageHero eyebrow="Services" title="Websites and web tools, done properly.">
+        Zaptask builds and maintains websites, landing pages and business web applications for small businesses across the United States and Canada. Every project is handled personally by the owner.
       </PageHero>
 
       <nav aria-label="Services" className="border-b border-border bg-card">

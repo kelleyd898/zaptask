@@ -17,7 +17,7 @@ export const Route = createFileRoute("/terms")({
         { h: "Limitation of Liability", body: <p>To the fullest extent permitted by law, {site.name} is not liable for indirect or consequential damages arising from use of this website.</p> },
         { h: "Governing Law", body: <p>These terms are governed by the laws of {site.legal.governingState}, without regard to conflict-of-law principles.</p> },
         { h: "Changes", body: <p>We may revise these terms at any time. Continued use of the website constitutes acceptance of the updated terms.</p> },
-        { h: "Contact", body: <p>Questions about these terms can be sent to <a className="text-brand underline" href={`mailto:${site.email}`}>{site.email}</a>.</p> },
+        { h: "Contact", body: <p>Questions about these terms can be sent to <a className="text-brand underline" href={`mailto:${site.email}`}>{site.email}</a>. Mailing address: {site.address}.</p> },
       ]}
     />
   ),
