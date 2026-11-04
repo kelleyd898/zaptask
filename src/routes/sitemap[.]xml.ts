@@ -1,0 +1,17 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { site } from "@/config/site";
+
+const paths = ["/", "/about", "/services", "/contact", "/book", "/privacy", "/terms"];
+
+export const Route = createFileRoute("/sitemap.xml")({
+  server: {
+    handlers: {
+      GET: () => {
+        const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${paths
+          .map((p) => `  <url><loc>${site.url}${p === "/" ? "" : p}</loc></url>`)
+          .join("\n")}\n</urlset>`;
+        return new Response(xml, { headers: { "Content-Type": "application/xml" } });
+      },
+    },
+  },
+});
