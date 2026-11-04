@@ -5,18 +5,19 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { nav, site } from "@/config/site";
 import { services } from "@/data/services";
+import logoAsset from "@/assets/zaptask_logo.png.asset.json";
 
-export function Logo() {
+export function Logo({ className }: { className?: string }) {
   return (
-    <Link to="/" className="flex items-center gap-2 font-semibold tracking-tight text-foreground" aria-label="Zaptask LLC home">
-      <span className="grid size-7 place-items-center rounded-md bg-primary text-primary-foreground">
-        <svg viewBox="0 0 24 24" className="size-4" fill="currentColor" aria-hidden="true">
-          <path d="M13.5 2 4 14h6.5L9.5 22 20 9.5h-6.5L13.5 2Z" />
-        </svg>
-      </span>
-      <span>
-        Zaptask<span className="text-muted-foreground font-normal"> LLC</span>
-      </span>
+    <Link to="/" className="inline-flex items-center" aria-label="Zaptask LLC home">
+      <img
+        src={logoAsset.url}
+        alt="Zaptask LLC"
+        width={2000}
+        height={272}
+        decoding="async"
+        className={cn("h-6 w-auto md:h-7", className)}
+      />
     </Link>
   );
 }
@@ -75,8 +76,8 @@ export function SiteFooter() {
     <footer className="bg-ink text-ink-foreground">
       <div className="container-page grid gap-12 py-16 md:grid-cols-12">
         <div className="md:col-span-4">
-          <p className="text-lg font-semibold">{site.name}</p>
-          <p className="mt-3 max-w-xs text-sm text-ink-foreground/65">
+          <Logo className="h-7 md:h-8" />
+          <p className="mt-4 max-w-xs text-sm text-ink-foreground/65">
             Website and web application development for small businesses across the {site.markets}.
           </p>
           <div className="mt-6 space-y-2">

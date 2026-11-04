@@ -11,3 +11,4 @@
 
 - Business info and toggles live in `src/config/site.ts`; pages must read from it rather than hardcoding contact details.
 - All form notifications go through the single `submitInquiry` server function so Telegram secrets stay server-side.
+- The approved brand mark is the blue "ZAPTASK LLC" wordmark at `src/assets/zaptask_logo.png.asset.json`; the `Logo` component in `src/components/site/layout.tsx` renders it in the header and footer, and `public/favicon.png` / `public/apple-touch-icon.png` are derived from its letterform — replace all of them together, never one alone.
