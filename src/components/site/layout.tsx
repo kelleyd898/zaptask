@@ -155,14 +155,14 @@ export function ConsultationCTA() {
   return (
     <section className="container-page py-20 md:py-28">
       <div className="relative overflow-hidden rounded-3xl bg-ink px-8 py-14 text-ink-foreground md:px-16 md:py-20">
-        <div className="pointer-events-none absolute -right-24 -top-24 size-80 rounded-full bg-brand/30 blur-3xl" aria-hidden="true" />
+        <div className="pointer-events-none absolute -right-24 -top-24 size-80 rounded-full bg-brand-bright/30 blur-3xl" aria-hidden="true" />
         <div className="relative max-w-2xl">
           <h2 className="text-3xl font-semibold md:text-4xl">Have a project in mind?</h2>
           <p className="mt-4 text-ink-foreground/70">
             Share your goals and requirements. We'll review your request and follow up to schedule a conversation.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/book" className={cn(buttonVariants({ variant: "secondary", size: "lg" }), "h-12")}>
+            <Link to="/book" className={cn(buttonVariants({ size: "lg" }), "h-12")}>
               Book a Consultation <ArrowRight className="size-4" />
             </Link>
             <Link to="/contact" className="inline-flex h-12 items-center rounded-md border border-ink-foreground/20 px-6 text-sm font-medium transition-colors hover:bg-ink-foreground/10">

@@ -29,6 +29,7 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-brand: var(--brand);
+  --color-brand-bright: var(--brand-bright);
   --color-brand-soft: var(--brand-soft);
   --color-ink: var(--ink);
   --color-ink-foreground: var(--ink-foreground);
@@ -64,16 +65,19 @@
   --card-foreground: oklch(0.22 0.03 262);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.22 0.03 262);
-  --primary: oklch(0.24 0.05 262);
-  --primary-foreground: oklch(0.985 0.004 85);
+  --primary: var(--brand-bright);
+  --primary-foreground: var(--ink);
   --secondary: oklch(0.955 0.006 85);
   --secondary-foreground: oklch(0.24 0.05 262);
   --muted: oklch(0.955 0.006 85);
   --muted-foreground: oklch(0.5 0.02 262);
   --accent: oklch(0.95 0.02 255);
   --accent-foreground: oklch(0.3 0.1 258);
-  --brand: oklch(0.55 0.17 258);
-  --brand-soft: oklch(0.94 0.03 255);
+  /** Deeper blue in the logo's own hue — used for links, labels and small text. */
+  --brand: oklch(0.5 0.12 228.4);
+  /** The logo's own blue (exact #4DBCE9) — used for buttons, fills and highlights. */
+  --brand-bright: oklch(0.7498 0.1186 228.4);
+  --brand-soft: oklch(0.92 0.05 228.4);
   --ink: oklch(0.2 0.035 262);
   --ink-foreground: oklch(0.96 0.006 85);
   --success: oklch(0.55 0.13 155);
@@ -81,7 +85,7 @@
   --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(0.91 0.006 85);
   --input: oklch(0.89 0.008 85);
-  --ring: oklch(0.55 0.17 258);
+  --ring: oklch(0.5 0.12 228.4);
   --chart-1: oklch(0.55 0.17 258);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
