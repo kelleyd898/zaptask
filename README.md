@@ -38,5 +38,5 @@ Built on TanStack Start (React 19 + Vite + TypeScript + Tailwind v4, file-based 
 
 ### Setup
 1. `bun install` then `bun run dev`
-2. Copy `.env.example` to `.env` and set `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` (server-only, never `VITE_`).
+2. Link the **Telegram** connector (Connectors → Telegram → connect). That stores the bot token and gives the app `TELEGRAM_API_KEY`. Then set `TELEGRAM_CHAT_ID` (the chat that should receive inquiries) as a project secret. Both are server-only, never `VITE_`.
 3. In Lovable, add the same two values as project secrets before publishing.

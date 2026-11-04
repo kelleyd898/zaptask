@@ -52,9 +52,12 @@ export const submitInquiry = createServerFn({ method: "POST" })
     const ip = req.headers.get("cf-connecting-ip") ?? req.headers.get("x-forwarded-for")?.split(",")[0] ?? "unknown";
     if (rateLimited(ip)) return { ok: false as const, error: "Too many requests. Please try again later." };
 
-    const token = process.env["TELEGRAM_BOT_TOKEN"];
+    // Telegram is reached through the Lovable connector gateway: the bot token
+    // itself lives in the connector connection, never in this codebase.
+    const gatewayKey = process.env["LOVABLE_API_KEY"];
+    const connectionKey = process.env["TELEGRAM_API_KEY"];
     const chatId = process.env["TELEGRAM_CHAT_ID"];
-    if (!token || !chatId) {
+    if (!gatewayKey || !connectionKey || !chatId) {
       console.error("Telegram credentials are not configured");
       return { ok: false as const, error: "We couldn't send your message right now. Please email us directly." };
     }
@@ -73,13 +76,22 @@ export const submitInquiry = createServerFn({ method: "POST" })
     const body = `<b>${heading}</b>\n\n` + lines.map(([k, v]) => `<b>${k}:</b> ${esc(v)}`).join("\n");
 
     try {
-      const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      const res = await fetch("https://connector-gateway.lovable.dev/telegram/sendMessage", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Authorization": `Bearer ${gatewayKey}`,
+          "X-Connection-Api-Key": connectionKey,
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({ chat_id: chatId, text: body, parse_mode: "HTML", disable_web_page_preview: true }),
       });
       if (!res.ok) {
-        console.error("Telegram API error", res.status, await res.text());
+        console.error("Telegram gateway error", res.status, await res.text());
+        return { ok: false as const, error: "We couldn't send your message right now. Please try again or email us." };
+      }
+      const sent = (await res.json()) as { ok?: boolean; description?: string };
+      if (sent.ok === false) {
+        console.error("Telegram send rejected", sent.description);
         return { ok: false as const, error: "We couldn't send your message right now. Please try again or email us." };
       }
     } catch (e) {
