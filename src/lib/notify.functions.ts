@@ -52,12 +52,11 @@ export const submitInquiry = createServerFn({ method: "POST" })
     const ip = req.headers.get("cf-connecting-ip") ?? req.headers.get("x-forwarded-for")?.split(",")[0] ?? "unknown";
     if (rateLimited(ip)) return { ok: false as const, error: "Too many requests. Please try again later." };
 
-    // Telegram is reached through the Lovable connector gateway: the bot token
-    // itself lives in the connector connection, never in this codebase.
-    const gatewayKey = process.env["LOVABLE_API_KEY"];
-    const connectionKey = process.env["TELEGRAM_API_KEY"];
-    const chatId = process.env["TELEGRAM_CHAT_ID"];
-    if (!gatewayKey || !connectionKey || !chatId) {
+    // Bot token is a server-only project secret, never in this codebase.
+    const botToken = process.env["TELEGRAM_BOT_TOKEN"];
+    // Owner's Telegram chat that receives every inquiry.
+    const chatId = "8762480548";
+    if (!botToken) {
       console.error("Telegram credentials are not configured");
       return { ok: false as const, error: "We couldn't send your message right now. Please email us directly." };
     }
@@ -76,13 +75,9 @@ export const submitInquiry = createServerFn({ method: "POST" })
     const body = `<b>${heading}</b>\n\n` + lines.map(([k, v]) => `<b>${k}:</b> ${esc(v)}`).join("\n");
 
     try {
-      const res = await fetch("https://connector-gateway.lovable.dev/telegram/sendMessage", {
+      const res = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
         method: "POST",
-        headers: {
-          "Authorization": `Bearer ${gatewayKey}`,
-          "X-Connection-Api-Key": connectionKey,
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ chat_id: chatId, text: body, parse_mode: "HTML", disable_web_page_preview: true }),
       });
       if (!res.ok) {
